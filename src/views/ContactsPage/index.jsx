@@ -6,10 +6,21 @@ import ContactForm from "../../components/ContactForm";
 import phonebookOperations from "../../redux/phonebook/phonebookOperations";
 import phonebookSelectors from "../../redux/phonebook/contacts-selectors";
 import { CSSTransition } from "react-transition-group";
+import { authSelectors } from "../../redux/auth";
 
 class ContactsPage extends Component {
   componentDidMount() {
+    if (!this.props.isAuthenticated) {
+      this.props.history.replace("/login");
+      return;
+    }
     this.props.onFetchItems();
+  }
+  componentDidUpdate() {
+    if (!this.props.isAuthenticated) {
+      this.props.history.replace("/login");
+      return;
+    }
   }
 
   render() {
@@ -34,21 +45,10 @@ class ContactsPage extends Component {
   }
 }
 
-// const mapStateToProps = (state) => ({
-//   isLoadingTasks: tasksSelectors.getLoading(state),
-// });
-
-// const mapDispatchToProps = {
-//   onFetchTasks: tasksOperations.fetchTasks,
-// };
-
-// export default // connect(mapStateToProps, mapDispatchToProps)(
-// ContactsPage;
-// // );
-
 const mapStateToProps = (state) => {
   return {
     contacts: phonebookSelectors.getItem(state),
+    isAuthenticated: authSelectors.isAuthenticated(state),
   };
 };
 const mapDispatchToProps = {

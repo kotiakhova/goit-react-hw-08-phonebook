@@ -1,26 +1,23 @@
 import React from "react";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { connect } from "react-redux";
 import ContactListItem from "../ContactListItem";
-import "./ContactList.css";
 import phonebookSelectors from "../../redux/phonebook/contacts-selectors";
+import { authSelectors } from "../../redux/auth";
 
-function ContactList({ contacts }) {
+function ContactList({ contacts, isAuthenticated }) {
   return (
     <>
-      <TransitionGroup component="ul" className="ContactList">
-        {contacts.map(({ id }) => (
-          <CSSTransition key={id} timeout={250} classNames="contactListItem">
-            <ContactListItem id={id} />
-          </CSSTransition>
-        ))}
-      </TransitionGroup>
+      {contacts.map(({ id }) => (
+        <ContactListItem id={id} key={id} />
+      ))}
     </>
   );
 }
 const mapStateToProps = (state) => {
   return {
-    contacts: phonebookSelectors.getFilteredItems(state),
+    contacts: authSelectors.isAuthenticated(state)
+      ? phonebookSelectors.getFilteredItems(state)
+      : [],
   };
 };
 

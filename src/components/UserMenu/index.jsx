@@ -3,8 +3,8 @@
  * TODO: диспатч операцию logout
  */
 import React from "react";
-// import { connect } from 'react-redux';
-// import { authSelectors, authOperations } from '../redux/auth';
+import { connect } from "react-redux";
+import { authSelectors, authOperations } from "../../redux/auth";
 
 const styles = {
   container: {
@@ -18,25 +18,32 @@ const styles = {
     fontWeight: 700,
     marginRight: 12,
   },
+  button: {
+    marginLeft: 4,
+    backgroundColor: "darkslategrey",
+    color: "white",
+    padding: "4px 10px",
+    fontFamily: '"Montserrat", sans-serif',
+    fontWeight: "500",
+    fontSize: "13px",
+    border: "none",
+    borderRadius: 2,
+  },
 };
 
-const UserMenu = ({ avatar, name, onLogout }) => (
+const UserMenu = ({ name, onLogout }) => (
   <div style={styles.container}>
-    {/* <img src={avatar} alt="" width="32" style={styles.avatar} /> */}
-    <span style={styles.name}>Welcome, {name}</span>
-    <button type="button" onClick={onLogout}>
+    <span style={styles.name}>Welcome, {name}!</span>
+    <button type="button" onClick={onLogout} style={styles.button}>
       Logout
     </button>
   </div>
 );
 
-// const mapStateToProps = state => ({
-//   name: authSelectors.getUserName(state),
-//   avatar:
-//     'https://icon-library.net/images/avatar-icon-images/avatar-icon-images-7.jpg',
-// });
+const mapStateToProps = (state) => ({
+  name: authSelectors.getUserName(state),
+});
 
-export default // connect(mapStateToProps, { onLogout: authOperations.logOut })(
-UserMenu;
-//   ,
-// );
+export default connect(mapStateToProps, { onLogout: authOperations.logOut })(
+  UserMenu
+);

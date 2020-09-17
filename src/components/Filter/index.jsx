@@ -3,10 +3,16 @@ import { connect } from "react-redux";
 import phonebookActions from "../../redux/phonebook/phonebookActions";
 import phonebookSelectors from "../../redux/phonebook/contacts-selectors";
 
+const styles = {
+  filter: {
+    marginBottom: 25,
+  },
+};
+
 function Filter({ filterItems }) {
   return (
     <>
-      <div>
+      <div style={styles.filter}>
         <p>Find contacts by name</p>
         <input
           name="filter"

@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import routes from "../../routes";
+import withAuth from "../hoc/withAuth";
 
 const styles = {
   link: {
@@ -16,20 +17,39 @@ const styles = {
   },
 };
 
-const Navigation = () => (
+const Navigation = ({ isAuthenticated }) => (
   <nav>
-    {routes.map((route) => (
-      <NavLink
-        exact={route.exact}
-        key={route.label}
-        to={route.path}
-        style={styles.link}
-        activeStyle={styles.activeLink}
-      >
-        {route.label}
-      </NavLink>
-    ))}
+    {routes.map((route) => {
+      if (
+        (route.private && isAuthenticated) ||
+        (!route.private && !route.restricted)
+      ) {
+        return (
+          <NavLink
+            exact={route.exact}
+            key={route.label}
+            to={route.path}
+            style={styles.link}
+            activeStyle={styles.activeLink}
+          >
+            {route.label}
+          </NavLink>
+        );
+      }
+    })}
   </nav>
 );
 
-export default Navigation;
+export default withAuth(Navigation);
+
+// {routes.map((route) => (
+//   <NavLink
+//     exact={route.exact}
+//     key={route.label}
+//     to={route.path}
+//     style={styles.link}
+//     activeStyle={styles.activeLink}
+//   >
+//     {route.label}
+//   </NavLink>
+// ))}

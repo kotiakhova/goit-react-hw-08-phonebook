@@ -11,3 +11,14 @@
   top: 0;
   right: 5px;
 }
+.button {
+  display: block;
+  background-color: darkslategrey;
+  color: white;
+  margin-top: 28px;
+  padding: 6px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  border: none;
+  border-radius: 2px;
+}

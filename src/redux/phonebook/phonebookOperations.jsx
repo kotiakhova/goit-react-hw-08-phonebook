@@ -1,8 +1,6 @@
 import axios from "axios";
 import phonebookActions from "./phonebookActions";
 
-axios.defaults.baseURL = "http://localhost:2000";
-
 const addItem = (name, number) => (dispatch) => {
   dispatch(phonebookActions.addItemRequest());
   axios

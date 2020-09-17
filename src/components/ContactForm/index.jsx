@@ -75,7 +75,9 @@ class ContactForm extends Component {
                 value={number}
               />
             </label>
-            <button type="submit">Add contact </button>
+            <button type="submit" className={style.button}>
+              Add contact{" "}
+            </button>
           </form>
           <CSSTransition
             in={isCorrect ? true : false}
@@ -86,7 +88,7 @@ class ContactForm extends Component {
           >
             <div
               className={style.errorModal}
-            >{`${this.nameChecking()} is already in contact`}</div>
+            >{`Person is already in contacts`}</div>
           </CSSTransition>
           <CSSTransition
             in={isFull ? true : false}

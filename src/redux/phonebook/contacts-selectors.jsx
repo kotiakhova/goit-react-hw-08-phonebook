@@ -1,7 +1,7 @@
 import { createSelector } from "reselect";
 
-const getItem = (state) => state.phonebookReducer.items;
-const getFilter = (state) => state.phonebookReducer.filter;
+const getItem = (state) => state.contacts.items;
+const getFilter = (state) => state.contacts.filter;
 
 const getItemById = createSelector([(_, id) => id, getItem], (id, items) => {
   const item = items.find((item) => item.id === id);

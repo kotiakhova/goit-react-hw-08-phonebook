@@ -10,6 +10,17 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     padding: 4,
+    paddingBottom: 25,
+  },
+  button: {
+    marginLeft: 4,
+    backgroundColor: "darkslategrey",
+    color: "white",
+    padding: "7px 16px",
+    fontFamily: '"Montserrat", sans-serif',
+    fontWeight: "500",
+    border: "none",
+    borderRadius: 2,
   },
 };
 
@@ -69,7 +80,9 @@ class RegisterPage extends Component {
             />
           </label>
 
-          <button type="submit">Register</button>
+          <button type="submit" style={styles.button}>
+            Register
+          </button>
         </form>
       </div>
     );

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-// import { connect } from 'react-redux';
-// import { authOperations } from '../redux/auth';
+import { connect } from "react-redux";
+import { authOperations } from "../../redux/auth";
 
 const styles = {
   form: {
@@ -10,6 +10,17 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     padding: 4,
+    paddingBottom: 25,
+  },
+  button: {
+    marginLeft: 4,
+    backgroundColor: "darkslategrey",
+    color: "white",
+    padding: "7px 16px",
+    fontFamily: '"Montserrat", sans-serif',
+    fontWeight: "500",
+    border: "none",
+    borderRadius: 2,
   },
 };
 
@@ -58,13 +69,13 @@ class LoginPage extends Component {
             />
           </label>
 
-          <button type="submit">Login</button>
+          <button type="submit" style={styles.button}>
+            Login{" "}
+          </button>
         </form>
       </div>
     );
   }
 }
 
-export default // connect(null, { onLogin: authOperations.logIn })(
-LoginPage;
-// );
+export default connect(null, { onLogin: authOperations.logIn })(LoginPage);
