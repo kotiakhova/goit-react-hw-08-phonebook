@@ -39,7 +39,6 @@ class ContactsPage extends Component {
           <Filter />
         </CSSTransition>
         <ContactList />
-        {/* {this.props.isLoadingTasks && <h1>Doing HTTP stuff...</h1>} */}
       </>
     );
   }

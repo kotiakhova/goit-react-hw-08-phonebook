@@ -19,7 +19,6 @@ class App extends Component {
           <Suspense fallback={<h1>Loading...</h1>}>
             <Switch>
               {routes.map((route) =>
-                // <Route key={route.path} {...route} />
                 route.private ? (
                   <PrivateRoute key={route.label} {...route} />
                 ) : (

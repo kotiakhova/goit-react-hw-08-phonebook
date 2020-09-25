@@ -5,7 +5,9 @@ export default [
     path: "/",
     label: "Home",
     exact: true,
-    component: lazy(() => import("./views/HomePage")),
+    component: lazy(() =>
+      import("./views/HomePage" /* webpackChunkName: "home-page" */)
+    ),
     private: false,
     restricted: false,
   },
@@ -13,7 +15,9 @@ export default [
     path: "/register",
     label: "Register",
     exact: true,
-    component: lazy(() => import("./views/RegisterPage")),
+    component: lazy(() =>
+      import("./views/RegisterPage" /* webpackChunkName: "register-page" */)
+    ),
     private: false,
     restricted: true,
   },
@@ -21,7 +25,9 @@ export default [
     path: "/login",
     label: "Login",
     exact: true,
-    component: lazy(() => import("./views/LoginPage")),
+    component: lazy(() =>
+      import("./views/LoginPage" /* webpackChunkName: "login-page" */)
+    ),
     private: false,
     restricted: true,
   },
@@ -29,7 +35,9 @@ export default [
     path: "/contacts",
     label: "Contacts",
     exact: true,
-    component: lazy(() => import("./views/ContactsPage")),
+    component: lazy(() =>
+      import("./views/ContactsPage" /* webpackChunkName: "contacts-page" */)
+    ),
     private: true,
     restricted: false,
   },
