@@ -4,12 +4,14 @@ import ContactListItem from "../ContactListItem";
 import phonebookSelectors from "../../redux/phonebook/contacts-selectors";
 import { authSelectors } from "../../redux/auth";
 
-function ContactList({ contacts, isAuthenticated }) {
+function ContactList({ contacts }) {
   return (
     <>
-      {contacts.map(({ id }) => (
-        <ContactListItem id={id} key={id} />
-      ))}
+      <ul>
+        {contacts.map(({ id }) => (
+          <ContactListItem id={id} key={id} />
+        ))}
+      </ul>
     </>
   );
 }
